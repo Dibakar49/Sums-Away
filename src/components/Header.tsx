@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenPlayConsoleModal, onPrint 
   const [copied, setCopied] = useState(false);
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(POLICY_METADATA.policyUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -39,16 +39,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenPlayConsoleModal, onPrint 
           <a href="#overview" className="hover:text-stone-900 transition-colors whitespace-nowrap shrink-0">
             Overview
           </a>
-          <a href="#on-device-data" className="hover:text-stone-900 transition-colors whitespace-nowrap shrink-0">
-            Local Data
+          <a href="#information-on-device" className="hover:text-stone-900 transition-colors whitespace-nowrap shrink-0">
+            On-Device Data
           </a>
           <a href="#children-parents" className="hover:text-stone-900 transition-colors whitespace-nowrap shrink-0">
-            Children & COPPA
+            Children & Parents
           </a>
-          <a href="#backups-transfers" className="hover:text-stone-900 transition-colors whitespace-nowrap shrink-0">
+          <a href="#android-backups" className="hover:text-stone-900 transition-colors whitespace-nowrap shrink-0">
             Backups & Export
           </a>
-          <a href="#amendments-contact" className="hover:text-stone-900 transition-colors whitespace-nowrap shrink-0">
+          <a href="#changes-contact" className="hover:text-stone-900 transition-colors whitespace-nowrap shrink-0">
             Developer Contact
           </a>
         </nav>
@@ -58,10 +58,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenPlayConsoleModal, onPrint 
           <button
             onClick={onOpenPlayConsoleModal}
             className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-300 rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-            title="Google Play Console Data Safety Helper"
+            title="Google Play Console Data Safety Reference"
           >
             <FileCheck className="w-3.5 h-3.5 text-stone-600" />
-            <span>Play Store Audit</span>
+            <span>Play Console Reference</span>
           </button>
 
           <button

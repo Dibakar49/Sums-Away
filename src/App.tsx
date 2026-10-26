@@ -61,7 +61,7 @@ export default function App() {
         {/* Printable Official Letterhead (visible only in print) */}
         <div className="print-only mb-8 pb-6 border-b-2 border-black">
           <h1 className="text-2xl font-bold font-serif uppercase tracking-tight">
-            Official Privacy Policy &amp; Child Data Protection Notice
+            Privacy Policy
           </h1>
           <p className="text-sm font-semibold mt-1">Application: {POLICY_METADATA.appName}</p>
           <div className="text-xs space-y-0.5 mt-2">
@@ -69,7 +69,8 @@ export default function App() {
             <p><strong>Official Contact:</strong> {POLICY_METADATA.privacyContact}</p>
             <p><strong>Last Updated &amp; Effective Date:</strong> {POLICY_METADATA.lastUpdated}</p>
             <p><strong>Platform:</strong> {POLICY_METADATA.platform}</p>
-            <p><strong>Regulatory Compliance:</strong> COPPA, GDPR-K, Google Play Designed for Families Policy</p>
+            <p><strong>Policy URL:</strong> {POLICY_METADATA.policyUrl}</p>
+            <p><strong>Architecture:</strong> Standalone Offline (No Internet Permission)</p>
           </div>
         </div>
 
@@ -79,11 +80,11 @@ export default function App() {
             
             {/* Regulatory Kicker with Unboxed Metadata */}
             <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-stone-500 uppercase tracking-wider">
-              <span>Official Legal Disclosure</span>
+              <span>Offline Android App</span>
               <span aria-hidden="true">·</span>
-              <span>COPPA &amp; GDPR-K Compliant</span>
+              <span>Intended for Children &amp; Families</span>
               <span aria-hidden="true">·</span>
-              <span>Google Play Families Program</span>
+              <span>No Internet Permission</span>
             </div>
 
             {/* Main Headline */}
@@ -120,9 +121,9 @@ export default function App() {
 
             {/* Core Mission Note */}
             <p className="text-stone-700 text-sm sm:text-base leading-relaxed pt-2">
-              This policy explains how the offline Android version of <strong>Sums Away</strong> handles 
-              information. The app provides interactive math games, practice activities, and progress tracking. 
-              <strong> No account, email registration, password, or internet connection is required to play.</strong>
+              This policy explains how the current offline Android version of <strong>Sums Away</strong> handles 
+              information. The app provides maths games, practice activities and progress tracking. 
+              <strong> No account, email login or internet connection is required to play.</strong>
             </p>
 
           </div>
@@ -194,7 +195,7 @@ export default function App() {
               ))
             )}
 
-            {/* Statutory Certification & Direct Inquiries Card */}
+            {/* Developer Contact & Direct Inquiries Card */}
             <div className="border border-stone-200 bg-stone-100/70 rounded-lg p-6 sm:p-8 mt-12">
               <div className="flex items-start gap-4">
                 <div className="p-2.5 bg-white border border-stone-200 rounded-md shrink-0">
@@ -202,12 +203,11 @@ export default function App() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-lg font-serif font-bold text-stone-900">
-                    Developer Direct Assurance &amp; Data Rights
+                    Developer Contact &amp; Privacy Inquiries
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                    As an independent developer, Dibakar Munshi is dedicated to providing safe, joyful math education 
-                    free from corporate telemetry, dark patterns, or commercial data extraction. 
-                    If you have questions about this privacy statement, technical data handling, or wish to verify child privacy compliance:
+                    Sums Away is developed by Dibakar Munshi as an offline educational app for children and families. 
+                    If you have questions about this privacy policy, local data handling, or older online data from earlier test versions:
                   </p>
                   <div className="pt-2 flex flex-wrap items-center gap-3">
                     <a
@@ -221,7 +221,7 @@ export default function App() {
                       onClick={() => setIsPlayModalOpen(true)}
                       className="no-print inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-stone-700 bg-white hover:bg-stone-50 border border-stone-300 rounded-md transition-colors cursor-pointer"
                     >
-                      <span>Play Console Verification Helper</span>
+                      <span>Play Console Reference Helper</span>
                       <ArrowRight className="w-3.5 h-3.5 text-stone-500" />
                     </button>
                   </div>

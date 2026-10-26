@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { X, Copy, Check, FileCheck, ExternalLink, ShieldCheck } from 'lucide-react';
+import { X, Copy, Check, FileCheck, Info } from 'lucide-react';
 import { POLICY_METADATA, generatePlayConsoleSummary } from '../utils/policyData';
 
 interface PlayConsoleModalProps {
@@ -18,7 +18,7 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
 
   if (!isOpen) return null;
 
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://...';
+  const currentUrl = POLICY_METADATA.policyUrl;
   const summaryText = generatePlayConsoleSummary(POLICY_METADATA);
 
   const handleCopySnippet = () => {
@@ -47,7 +47,7 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
           <div className="flex items-center gap-2">
             <FileCheck className="w-5 h-5 text-stone-800" />
             <h3 id="modal-title" className="text-base font-serif font-bold text-stone-900">
-              Google Play Console Data Safety & Compliance Helper
+              Google Play Console Data Safety Reference
             </h3>
           </div>
           <button
@@ -61,14 +61,23 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
 
         {/* Modal Body */}
         <div className="p-6 space-y-5 max-h-[75vh] overflow-y-auto text-sm">
+          
+          {/* Important Publisher Responsibility Notice */}
+          <div className="p-3.5 bg-amber-50 border border-amber-200/80 rounded-md flex items-start gap-2.5 text-xs text-amber-900 leading-relaxed">
+            <Info className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+            <p>
+              <strong>Publisher Responsibility:</strong> A public policy URL and corrected text alone do not certify all applicable legal requirements. The publisher remains responsible for the compliance declaration.
+            </p>
+          </div>
+
           <p className="text-stone-600 text-xs leading-relaxed">
-            Use these verified answers when completing the <strong className="text-stone-900">Data safety</strong> and <strong className="text-stone-900">Target audience and content</strong> sections in Google Play Console for <em className="text-stone-800 font-medium">Sums Away: Math Games for Kids</em>.
+            Reference details for the <strong className="text-stone-900">Data safety</strong> and <strong className="text-stone-900">Target audience and content</strong> sections in Google Play Console for <em className="text-stone-800 font-medium">Sums Away: Math Games for Kids</em>.
           </p>
 
           {/* Privacy Policy URL Box */}
           <div className="p-3 bg-stone-50 border border-stone-200 rounded-md">
             <label className="block text-xs font-mono font-semibold text-stone-700 uppercase tracking-wider mb-1">
-              Your Public Privacy Policy URL (For Play Console)
+              Public Privacy Policy URL
             </label>
             <div className="flex items-center gap-2">
               <input
@@ -81,16 +90,16 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
                 onClick={handleCopyUrl}
                 className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-stone-800 bg-white hover:bg-stone-100 border border-stone-300 rounded transition-colors shrink-0 cursor-pointer"
               >
-                {copiedUrl ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedUrl ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-stone-600" />}
                 <span>{copiedUrl ? 'Copied' : 'Copy'}</span>
               </button>
             </div>
           </div>
 
-          {/* Q&A Data Safety Cheat Sheet */}
+          {/* Q&A Data Safety Reference Sheet */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono font-bold text-stone-800 uppercase tracking-wider">
-              Play Console Questionnaire Answers
+              Play Console Form Reference
             </h4>
 
             <div className="space-y-2 text-xs">
@@ -98,11 +107,11 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
                 <span className="font-semibold text-stone-900 block mb-0.5">
                   1. Does your app collect or share any of the required user data types?
                 </span>
-                <span className="text-emerald-700 font-medium block">
+                <span className="text-stone-800 font-medium block">
                   Select: "No"
                 </span>
                 <span className="text-stone-500 text-[11px] mt-0.5 block">
-                  Because Sums Away has no INTERNET permission and processes gameplay exclusively in local sandbox storage.
+                  The current app has no Internet permission and does not send data to developer-operated servers.
                 </span>
               </div>
 
@@ -119,20 +128,20 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
                 <span className="font-semibold text-stone-900 block mb-0.5">
                   3. Do you provide a way for users to request that their data be deleted?
                 </span>
-                <span className="text-emerald-700 font-medium block">
+                <span className="text-stone-800 font-medium block">
                   Select: "Yes"
                 </span>
                 <span className="text-stone-500 text-[11px] mt-0.5 block">
-                  Users and parents can erase all data directly via Android Settings &gt; Apps &gt; Sums Away &gt; Clear Storage, or by uninstalling.
+                  Users can delete local records anytime via Android Settings &gt; Apps &gt; Sums Away &gt; Clear Storage, or by uninstalling.
                 </span>
               </div>
 
               <div className="p-3 bg-stone-50 rounded border border-stone-200">
                 <span className="font-semibold text-stone-900 block mb-0.5">
-                  4. Families Policy &amp; Ads Declaration:
+                  4. Advertising &amp; Target Audience:
                 </span>
-                <span className="text-emerald-700 font-medium block">
-                  Target age: Children &amp; Families · Does app contain ads? "No"
+                <span className="text-stone-800 font-medium block">
+                  Target age: Children &amp; Families · Contains ads: "No"
                 </span>
               </div>
             </div>
@@ -142,7 +151,7 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
           <div>
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-xs font-mono font-bold text-stone-800 uppercase tracking-wider">
-                Audit Summary Text Block
+                Summary Reference Block
               </span>
               <button
                 onClick={handleCopySnippet}

@@ -32,13 +32,13 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Col 2: Direct Legal Contact */}
+          {/* Col 2: Direct Contact */}
           <div className="space-y-2">
             <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-stone-800">
-              Official Privacy Inquiries &amp; Deletion
+              Privacy Inquiries &amp; Deletion
             </h4>
             <p className="text-xs text-stone-600 leading-relaxed">
-              Parents, educators, and regulators can contact the developer directly regarding data protection or audit verification:
+              Parents, educators, or users can contact the developer directly regarding privacy questions or data requests:
             </p>
             <a
               href={`mailto:${POLICY_METADATA.privacyContact}?subject=Sums%20Away%20Privacy%20Inquiry%20or%20Data%20Request`}
@@ -49,16 +49,16 @@ export const Footer: React.FC = () => {
             </a>
           </div>
 
-          {/* Col 3: Statutory Standards */}
+          {/* Col 3: Key Information Handling Practices */}
           <div className="space-y-2">
             <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-stone-800">
-              Compliance Governance
+              Key Practices
             </h4>
             <ul className="text-xs text-stone-600 space-y-1">
-              <li>• US Children's Online Privacy Protection Act (COPPA)</li>
-              <li>• EU &amp; UK GDPR Article 8 (Child Data Protection)</li>
-              <li>• Google Play Families Policy &amp; Data Safety Standards</li>
-              <li>• Standalone Client Architecture (No Remote Telemetry)</li>
+              <li>• Standalone offline Android application</li>
+              <li>• No Internet permission requested</li>
+              <li>• No advertising or analytics SDKs</li>
+              <li>• Intended for children and families</li>
             </ul>
           </div>
 
