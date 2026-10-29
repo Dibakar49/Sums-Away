@@ -5,28 +5,24 @@
 
 import React from 'react';
 import { COMPLIANCE_ITEMS } from '../utils/policyData';
-import { WifiOff, Ban, BarChart2, UserX, Cpu, Users, Database, LayoutDashboard } from 'lucide-react';
+import { Smartphone, Ban, BarChart2, UserX, Cpu, Users, LayoutDashboard } from 'lucide-react';
 
 export const ComplianceGrid: React.FC = () => {
   const getIcon = (id: string) => {
     switch (id) {
-      case 'network':
-        return <WifiOff className="w-5 h-5 text-stone-700" />;
+      case 'storage':
+        return <Smartphone className="w-5 h-5 text-stone-700" />;
       case 'ads':
         return <Ban className="w-5 h-5 text-stone-700" />;
       case 'analytics':
         return <BarChart2 className="w-5 h-5 text-stone-700" />;
-      case 'storage':
-        return <Database className="w-5 h-5 text-stone-700" />;
-      case 'dashboard':
-        return <LayoutDashboard className="w-5 h-5 text-stone-700" />;
       case 'accounts':
         return <UserX className="w-5 h-5 text-stone-700" />;
+      case 'dashboard':
+        return <LayoutDashboard className="w-5 h-5 text-stone-700" />;
       case 'hardware':
-        return <Cpu className="w-5 h-5 text-stone-700" />;
-      case 'family':
       default:
-        return <Users className="w-5 h-5 text-stone-700" />;
+        return <Cpu className="w-5 h-5 text-stone-700" />;
     }
   };
 
@@ -39,8 +35,7 @@ export const ComplianceGrid: React.FC = () => {
               Offline App Privacy Summary
             </h2>
             <p className="text-sm text-stone-600 mt-1 max-w-3xl leading-relaxed">
-              Sumaway is intended for children and families. The current app has no Internet permission, 
-              advertising SDK or remote analytics SDK. This page describes its information-handling practices.
+              This page describes the information-handling practices of Sumaway. The app stores progress locally on your device and does not include third-party advertising or remote analytics SDKs.
             </p>
           </div>
           <div className="text-xs font-mono text-stone-500 shrink-0">

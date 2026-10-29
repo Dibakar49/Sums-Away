@@ -70,7 +70,7 @@ export default function App() {
             <p><strong>Last Updated &amp; Effective Date:</strong> {POLICY_METADATA.lastUpdated}</p>
             <p><strong>Platform:</strong> {POLICY_METADATA.platform}</p>
             <p><strong>Policy URL:</strong> {POLICY_METADATA.policyUrl}</p>
-            <p><strong>Architecture:</strong> Standalone Offline (No Internet Permission)</p>
+            <p><strong>Architecture:</strong> Standalone Offline (Local On-Device Storage)</p>
           </div>
         </div>
 
@@ -78,15 +78,6 @@ export default function App() {
         <section id="overview" className="mb-10 sm:mb-14">
           <div className="space-y-4 max-w-4xl">
             
-            {/* Regulatory Kicker with Unboxed Metadata */}
-            <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-stone-500 uppercase tracking-wider">
-              <span>Offline Android App</span>
-              <span aria-hidden="true">·</span>
-              <span>Intended for Children &amp; Families</span>
-              <span aria-hidden="true">·</span>
-              <span>No Internet Permission</span>
-            </div>
-
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-stone-900 tracking-tight leading-tight">
               Privacy Policy
@@ -206,7 +197,7 @@ export default function App() {
                     Developer Contact &amp; Privacy Inquiries
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                    Sumaway is developed by Dibakar Munshi as an offline educational app for children and families. 
+                    Sumaway is developed by Dibakar Munshi as an offline educational math application. 
                     If you have questions about this privacy policy, local data handling, or older online data from earlier test versions:
                   </p>
                   <div className="pt-2 flex flex-wrap items-center gap-3">

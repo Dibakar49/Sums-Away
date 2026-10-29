@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
               {POLICY_METADATA.appName}
             </h3>
             <p className="text-xs text-stone-600 leading-relaxed max-w-sm">
-              An offline educational math game engineered for children and families. 
+              An offline educational math game with practice activities, progress tracking, and a local parent dashboard. 
               Learning statistics are calculated locally on your phone for personal review and the parent dashboard; remote analytics are not uploaded.
             </p>
             <div className="pt-2 text-xs font-mono text-stone-500">
@@ -56,10 +56,10 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="text-xs text-stone-600 space-y-1">
               <li>• Standalone offline Android application</li>
-              <li>• On-device SQLite database storage</li>
+              <li>• In-phone local storage</li>
               <li>• Learning statistics calculated locally (no remote uploads)</li>
               <li>• PIN-free on-device parent dashboard</li>
-              <li>• Intended for children and families</li>
+              <li>• Anonymous gameplay using default profile</li>
             </ul>
           </div>
 

@@ -111,7 +111,7 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
                   Select: "No"
                 </span>
                 <span className="text-stone-500 text-[11px] mt-0.5 block">
-                  The current app has no Internet permission. Learning statistics (screen time, accuracy, hints) are calculated on-device for the local Parent Dashboard and are not sent to developer-operated servers.
+                  Learning statistics (screen time, accuracy, hints) are calculated on-device for the local Parent Dashboard and are not sent to developer-operated servers.
                 </span>
               </div>
 
@@ -141,7 +141,7 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
                   4. Advertising &amp; Target Audience:
                 </span>
                 <span className="text-stone-800 font-medium block">
-                  Target age: Children &amp; Families · Contains ads: "No"
+                  Target audience: General &amp; Educational · Contains ads: "No"
                 </span>
               </div>
             </div>

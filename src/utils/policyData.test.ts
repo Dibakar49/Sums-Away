@@ -28,36 +28,41 @@ test('POLICY_SECTIONS contains all 10 core numbered sections', () => {
   });
 });
 
-test('COMPLIANCE_ITEMS accurately describes factual SQLite storage and local analytics calculation', () => {
+test('COMPLIANCE_ITEMS accurately describes in-phone local storage and local analytics calculation without server transmission card', () => {
   assert.equal(COMPLIANCE_ITEMS.length, 6);
   
+  // Verify Server Transmission is removed
   const networkItem = COMPLIANCE_ITEMS.find((c) => c.id === 'network');
-  assert.ok(networkItem);
-  assert.equal(networkItem.status, 'Zero Collected');
+  assert.equal(networkItem, undefined, 'Server transmission item must be completely removed');
+
+  const storageItem = COMPLIANCE_ITEMS.find((c) => c.id === 'storage');
+  assert.ok(storageItem);
+  assert.equal(storageItem.title, 'In-Phone Local Storage');
+  assert.equal(storageItem.badgeLabel, 'In-Phone Local Storage');
 
   const analyticsItem = COMPLIANCE_ITEMS.find((c) => c.id === 'analytics');
   assert.ok(analyticsItem);
   assert.equal(analyticsItem.status, 'On-Device Only');
   assert.ok(analyticsItem.description.includes('locally on your phone'));
 
-  const storageItem = COMPLIANCE_ITEMS.find((c) => c.id === 'storage');
-  assert.ok(storageItem);
-  assert.equal(storageItem.badgeLabel, 'On-Device SQLite');
+  const accountsItem = COMPLIANCE_ITEMS.find((c) => c.id === 'accounts');
+  assert.ok(accountsItem);
+  assert.equal(accountsItem.badgeLabel, 'No Login Required');
 
   const dashboardItem = COMPLIANCE_ITEMS.find((c) => c.id === 'dashboard');
   assert.ok(dashboardItem);
   assert.equal(dashboardItem.badgeLabel, 'PIN-Free Local Dashboard');
 });
 
-test('searchPolicy filters sections accurately for SQLite, Parent Dashboard, and 90-day retention', () => {
+test('searchPolicy filters sections accurately for In-Phone Local Storage, Parent Dashboard, and 90-day retention', () => {
   // Empty query returns all sections
   assert.equal(searchPolicy('').length, 10);
   assert.equal(searchPolicy('   ').length, 10);
 
-  // Search for SQLite
-  const sqliteResults = searchPolicy('SQLite');
-  assert.ok(sqliteResults.length >= 2, 'Should match on-device storage and retention sections');
-  assert.ok(sqliteResults.some((s) => s.id === 'retention-deletion'));
+  // Search for in-phone local storage
+  const storageResults = searchPolicy('in-phone local storage');
+  assert.ok(storageResults.length >= 2, 'Should match on-device storage and retention sections');
+  assert.ok(storageResults.some((s) => s.id === 'retention-deletion'));
 
   // Search for Parent Dashboard
   const dashboardResults = searchPolicy('parent dashboard');
@@ -88,11 +93,11 @@ test('calculateReadingMetrics computes word count and reading time', () => {
   assert.ok(metrics.readingTimeMinutes >= 3);
 });
 
-test('generatePlayConsoleSummary includes Sumaway, SQLite, Parent Dashboard and 90 days retention notice', () => {
+test('generatePlayConsoleSummary includes Sumaway, in-phone local storage, Parent Dashboard and 90 days retention notice', () => {
   const summary = generatePlayConsoleSummary();
   assert.ok(summary.includes('Sumaway: Math Games for Kids'));
   assert.ok(summary.includes('Dibakar Munshi'));
-  assert.ok(summary.includes('SQLite database'));
+  assert.ok(summary.includes('In-phone local storage'));
   assert.ok(summary.includes('PARENT DASHBOARD'));
   assert.ok(summary.includes('90 days'));
   assert.ok(summary.includes('https://sumsaway.vercel.app/'));
