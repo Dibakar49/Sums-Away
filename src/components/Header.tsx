@@ -29,9 +29,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenPlayConsoleModal, onPrint 
         <a 
           href="#top" 
           className="text-lg font-serif font-bold tracking-tight text-stone-900 whitespace-nowrap shrink-0 hover:text-stone-700 transition-colors"
-          aria-label="Sums Away Legal & Privacy Portal"
+          aria-label="Sumaway Legal & Privacy Portal"
         >
-          Sums Away · Privacy
+          Sumaway · Privacy
         </a>
 
         {/* Zone 2: 4-5 single-line clean text navigation links */}

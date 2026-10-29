@@ -71,7 +71,7 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
           </div>
 
           <p className="text-stone-600 text-xs leading-relaxed">
-            Reference details for the <strong className="text-stone-900">Data safety</strong> and <strong className="text-stone-900">Target audience and content</strong> sections in Google Play Console for <em className="text-stone-800 font-medium">Sums Away: Math Games for Kids</em>.
+            Reference details for the <strong className="text-stone-900">Data safety</strong> and <strong className="text-stone-900">Target audience and content</strong> sections in Google Play Console for <em className="text-stone-800 font-medium">Sumaway: Math Games for Kids</em>.
           </p>
 
           {/* Privacy Policy URL Box */}
@@ -111,7 +111,7 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
                   Select: "No"
                 </span>
                 <span className="text-stone-500 text-[11px] mt-0.5 block">
-                  The current app has no Internet permission and does not send data to developer-operated servers.
+                  The current app has no Internet permission. Learning statistics (screen time, accuracy, hints) are calculated on-device for the local Parent Dashboard and are not sent to developer-operated servers.
                 </span>
               </div>
 
@@ -132,7 +132,7 @@ export const PlayConsoleModal: React.FC<PlayConsoleModalProps> = ({ isOpen, onCl
                   Select: "Yes"
                 </span>
                 <span className="text-stone-500 text-[11px] mt-0.5 block">
-                  Users can delete local records anytime via Android Settings &gt; Apps &gt; Sums Away &gt; Clear Storage, or by uninstalling.
+                  Users can delete local records anytime via Android Settings &gt; Apps &gt; Sumaway &gt; Clear Storage, or by uninstalling. Detailed question text is also automatically removed on-device after 90 days.
                 </span>
               </div>
 

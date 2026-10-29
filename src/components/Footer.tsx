@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
             </h3>
             <p className="text-xs text-stone-600 leading-relaxed max-w-sm">
               An offline educational math game engineered for children and families. 
-              Zero tracking, zero advertisements, and complete on-device data sovereignty.
+              Learning statistics are calculated locally on your phone for personal review and the parent dashboard; remote analytics are not uploaded.
             </p>
             <div className="pt-2 text-xs font-mono text-stone-500">
               <span>Developer: {POLICY_METADATA.developer}</span>
@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
               Parents, educators, or users can contact the developer directly regarding privacy questions or data requests:
             </p>
             <a
-              href={`mailto:${POLICY_METADATA.privacyContact}?subject=Sums%20Away%20Privacy%20Inquiry%20or%20Data%20Request`}
+              href={`mailto:${POLICY_METADATA.privacyContact}?subject=Sumaway%20Privacy%20Inquiry%20or%20Data%20Request`}
               className="inline-flex items-center gap-1.5 text-xs font-medium text-stone-900 hover:text-stone-700 underline underline-offset-2 transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-stone-600" />
@@ -56,8 +56,9 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="text-xs text-stone-600 space-y-1">
               <li>• Standalone offline Android application</li>
-              <li>• No Internet permission requested</li>
-              <li>• No advertising or analytics SDKs</li>
+              <li>• On-device SQLite database storage</li>
+              <li>• Learning statistics calculated locally (no remote uploads)</li>
+              <li>• PIN-free on-device parent dashboard</li>
               <li>• Intended for children and families</li>
             </ul>
           </div>

@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { COMPLIANCE_ITEMS } from '../utils/policyData';
-import { WifiOff, Ban, EyeOff, UserX, Cpu, Users } from 'lucide-react';
+import { WifiOff, Ban, BarChart2, UserX, Cpu, Users, Database, LayoutDashboard } from 'lucide-react';
 
 export const ComplianceGrid: React.FC = () => {
   const getIcon = (id: string) => {
@@ -15,7 +15,11 @@ export const ComplianceGrid: React.FC = () => {
       case 'ads':
         return <Ban className="w-5 h-5 text-stone-700" />;
       case 'analytics':
-        return <EyeOff className="w-5 h-5 text-stone-700" />;
+        return <BarChart2 className="w-5 h-5 text-stone-700" />;
+      case 'storage':
+        return <Database className="w-5 h-5 text-stone-700" />;
+      case 'dashboard':
+        return <LayoutDashboard className="w-5 h-5 text-stone-700" />;
       case 'accounts':
         return <UserX className="w-5 h-5 text-stone-700" />;
       case 'hardware':
@@ -35,8 +39,8 @@ export const ComplianceGrid: React.FC = () => {
               Offline App Privacy Summary
             </h2>
             <p className="text-sm text-stone-600 mt-1 max-w-3xl leading-relaxed">
-              Sums Away is intended for children and families. The current app has no Internet permission, 
-              advertising SDK or analytics SDK. This page describes its information-handling practices.
+              Sumaway is intended for children and families. The current app has no Internet permission, 
+              advertising SDK or remote analytics SDK. This page describes its information-handling practices.
             </p>
           </div>
           <div className="text-xs font-mono text-stone-500 shrink-0">

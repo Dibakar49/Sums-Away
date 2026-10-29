@@ -1,7 +1,7 @@
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
- * Official Privacy Policy Data & Utilities for Sums Away: Math Games for Kids
+ * Official Privacy Policy Data & Utilities for Sumaway: Math Games for Kids
  */
 
 export interface PolicyMetadata {
@@ -19,7 +19,7 @@ export interface PolicyMetadata {
 export interface CompliancePoint {
   id: string;
   title: string;
-  status: 'Zero Collected' | 'Not Applicable' | 'Family-Friendly';
+  status: 'Zero Collected' | 'Not Applicable' | 'On-Device Only' | 'Family-Friendly';
   description: string;
   badgeLabel: string;
 }
@@ -36,15 +36,15 @@ export interface PolicySection {
 }
 
 export const POLICY_METADATA: PolicyMetadata = {
-  appName: "Sums Away: Math Games for Kids",
-  appSubtitle: "Math Games, Practice Activities and Progress Tracking",
+  appName: "Sumaway: Math Games for Kids",
+  appSubtitle: "Math Games, Practice Activities, Parent Dashboard and Progress Tracking",
   developer: "Dibakar Munshi",
   privacyContact: "dibakar61601@gmail.com",
-  lastUpdated: "26 October 2026",
+  lastUpdated: "29 October 2026",
   policyUrl: "https://sumsaway.vercel.app/",
   platform: "Android (Offline)",
   targetAudience: "Children and Families",
-  architectureType: "Offline App-Private Storage (No Internet Permission)",
+  architectureType: "On-Device SQLite Storage (No Remote Analytics Upload)",
 };
 
 export const COMPLIANCE_ITEMS: CompliancePoint[] = [
@@ -64,17 +64,24 @@ export const COMPLIANCE_ITEMS: CompliancePoint[] = [
   },
   {
     id: "analytics",
-    title: "Analytics & Telemetry",
-    status: "Zero Collected",
-    description: "The app does not include analytics, remote crash-reporting, Firebase Authentication or Firestore services.",
-    badgeLabel: "No Analytics SDKs"
+    title: "Learning Statistics & Analytics",
+    status: "On-Device Only",
+    description: "Learning statistics (screen time, accuracy, hints) are calculated locally on your phone for the Parent Dashboard; remote analytics are not uploaded.",
+    badgeLabel: "On-Device Statistics"
   },
   {
-    id: "accounts",
-    title: "Accounts & Logins",
-    status: "Not Applicable",
-    description: "No account, email login, password or internet connection is required to play.",
-    badgeLabel: "No Account Required"
+    id: "storage",
+    title: "Local SQLite Storage",
+    status: "On-Device Only",
+    description: "Game progress and learning records are stored in an on-device SQLite database. Manual user backups are exported in JSON format.",
+    badgeLabel: "On-Device SQLite"
+  },
+  {
+    id: "dashboard",
+    title: "Parent Dashboard",
+    status: "Family-Friendly",
+    description: "Built-in parent dashboard displays screen time, learning durations, answers and hint summaries on the same device without a PIN.",
+    badgeLabel: "PIN-Free Local Dashboard"
   },
   {
     id: "hardware",
@@ -82,13 +89,6 @@ export const COMPLIANCE_ITEMS: CompliancePoint[] = [
     status: "Zero Collected",
     description: "The app does not access your contacts, camera, microphone or device location.",
     badgeLabel: "No Sensor Access"
-  },
-  {
-    id: "family",
-    title: "Children & Families Focus",
-    status: "Family-Friendly",
-    description: "Sums Away is intended for children and families. A child can play using the default profile without providing personal details.",
-    badgeLabel: "Family-Friendly Design"
   }
 ];
 
@@ -98,93 +98,97 @@ export const POLICY_SECTIONS: PolicySection[] = [
     number: 1,
     title: "1. What this policy covers",
     shortTitle: "What This Policy Covers",
-    plainSummary: "This policy explains how the offline Android app handles information. No account, email login or internet connection is needed to play.",
+    plainSummary: "This policy explains how the offline Android version of Sumaway handles information. The app provides maths games, practice activities, a parent dashboard and progress tracking. No account, email login or internet connection is required to play.",
     legalParagraphs: [
-      "This policy explains how the current offline Android version of Sums Away handles information. The app provides maths games, practice activities and progress tracking. No account, email login or internet connection is required to play."
+      "This policy explains how the current offline Android version of Sumaway handles information. The app provides maths games, practice activities, a parent dashboard and progress tracking. No account, email login or internet connection is required to play."
     ],
     keyPoints: [
-      "Applies to the offline Android version of Sums Away",
-      "No account or email login required",
-      "No internet connection required to play"
+      "Applies to the offline Android version of Sumaway",
+      "Covers math games, practice modules, and local parent dashboard",
+      "No account, email login or internet connection required"
     ],
-    keywords: ["covers", "offline", "maths", "practice", "account", "login", "internet"]
+    keywords: ["covers", "sumaway", "offline", "maths", "practice", "parent dashboard", "account", "login", "internet"]
   },
   {
     id: "information-on-device",
     number: 2,
     title: "2. Information kept on your device",
     shortTitle: "Information on Device",
-    plainSummary: "The app saves non-identifying game progress locally on your phone. The optional age calculator only processes dates on the device and does not save or send them.",
+    plainSummary: "The app saves information locally in an on-device SQLite database. The local Parent Dashboard tracks screen time, learning time, correct/wrong answers and hints without requiring a PIN. The age calculator processes dates only on the device.",
     legalParagraphs: [
-      "The app saves information locally so you can continue playing:",
+      "The app saves information locally in an on-device SQLite database so you can continue playing and reviewing progress:",
       "• Your chosen explorer name or nickname, optional country/region label, avatar choice and daily practice goal. You can keep the default profile; a real name is not required. The country/region label is entered by you, not obtained from location services.",
       "• Levels, stars, badges, treasures, XP, game credits, answers, mistakes, saved attempts, practice dates and time spent practising.",
+      "• Parent Dashboard & Learning Statistics: The app locally logs app screen time, learning time, correct and incorrect answers, hint usage, and daily, weekly and monthly practice summaries. This Parent Dashboard is accessed on the same device without requiring a PIN.",
       "• Preferences such as sound, animations, appearance, reminders and badge showcase choices.",
-      "• Local save/recovery copies and technical crash details if the app crashes.",
+      "• Local recovery copies and technical crash details if the app crashes.",
       "Playing does not require a real name, email address, account password, date of birth or payment information. The optional age calculator processes dates entered into that tool on the device; those dates are not added to the saved profile or sent to the developer.",
       "The current app does not request an account password, email address, phone number, real date of birth or payment details as a condition of play. It does not access your contacts, camera, microphone or device location."
     ],
     keyPoints: [
-      "Real name or real date of birth is not required to play",
-      "Age calculator processes dates on-device without profile saving or transmission",
-      "Country/region is user-typed text, not from location services",
-      "No access to contacts, camera, microphone or GPS"
+      "Data is stored locally in an on-device SQLite database",
+      "Parent Dashboard tracks learning time, screen time, accuracy and hints on-device without a PIN",
+      "Age calculator processes dates strictly in device memory without saving",
+      "No access to contacts, camera, microphone or device location"
     ],
-    keywords: ["device", "storage", "nickname", "avatar", "levels", "stars", "age calculator", "camera", "microphone", "location", "date of birth"]
+    keywords: ["sqlite", "device", "storage", "nickname", "avatar", "screen time", "learning time", "parent dashboard", "pin", "hints", "age calculator", "camera", "microphone", "location"]
   },
   {
     id: "collection-use-sharing",
     number: 3,
     title: "3. Collection, use and sharing",
     shortTitle: "Collection, Use & Sharing",
-    plainSummary: "The app has no Internet permission and cannot send your data to developer servers. We do not sell or receive your gameplay data.",
+    plainSummary: "Learning statistics are calculated locally on your phone for personal review and the parent dashboard; remote analytics are not uploaded. The app has no Internet permission and we do not receive or sell your gameplay data.",
     legalParagraphs: [
-      "The current app has no Internet permission and does not send saved profiles, answers, gameplay history or crash logs to developer-operated servers. It does not include advertising, analytics, remote crash-reporting, Firebase Authentication or Firestore services. It does not use advertising identifiers or provide an online leaderboard or live cloud synchronisation.",
-      "Information saved on the device is used to run the game, calculate rewards, show progress, review mistakes, resume attempts, apply preferences and schedule local reminders. Crash details stay in app-specific storage and are not automatically uploaded.",
+      "The current app has no Internet permission and does not send saved profiles, answers, gameplay history or crash logs to developer-operated servers. It does not include third-party advertising, remote tracking or analytics SDKs, remote crash-reporting, Firebase Authentication or Firestore services. It does not use advertising identifiers or provide an online leaderboard or live cloud synchronisation.",
+      "Learning statistics are calculated entirely on your phone for personal review and the local Parent Dashboard; remote analytics are not uploaded to external servers.",
+      "Information saved on the device is used to run the game, calculate rewards, show progress, review mistakes, resume attempts, display the local parent dashboard, apply preferences and schedule local reminders. Crash details stay in app-specific storage and are not automatically uploaded.",
       "We do not receive or sell the app's locally stored gameplay data. Android backups, files you export, external websites and support messages are separate cases described below."
     ],
     keyPoints: [
-      "No Internet permission declared in the app",
-      "No remote crash-reporting, advertising or analytics SDKs",
-      "No advertising identifiers (GAID) or online leaderboards",
-      "Developer does not receive or sell local gameplay data"
+      "No Internet permission declared in the app manifest",
+      "Learning statistics are calculated locally on the phone; remote analytics are not uploaded",
+      "Zero advertising SDKs or third-party tracking identifiers",
+      "Developer does not receive, store or sell local gameplay data"
     ],
-    keywords: ["internet permission", "collection", "sharing", "advertising", "analytics", "firebase", "crash logs", "sell"]
+    keywords: ["internet permission", "collection", "sharing", "learning statistics", "remote analytics", "advertising", "analytics", "parent dashboard", "sell"]
   },
   {
     id: "android-backups",
     number: 4,
     title: "4. Android backups and device transfer",
     shortTitle: "Android Backups & Transfer",
-    plainSummary: "Android and your device backup provider may back up app data to the cloud. This is managed by Android settings, not by Sums Away.",
+    plainSummary: "Android and your device backup provider may back up app data and local database records to the cloud. This is managed by Android settings, not by Sumaway.",
     legalParagraphs: [
-      "Android may back up eligible app progress and profile data, or transfer it to another device, depending on your Android version, device manufacturer, backup provider and device settings. This may include storage in your device-backup provider's cloud.",
-      "These backups are managed by Android and your backup provider, not by a Sums Away account or developer-run sync service. Restore is not guaranteed and may not include the latest session. Parents or guardians can review device backup settings and the backup provider's privacy policy."
+      "Android may back up eligible app progress, local database records and profile data, or transfer them to another device, depending on your Android version, device manufacturer, backup provider and device settings. This may include storage in your device-backup provider's cloud.",
+      "These backups are managed by Android and your backup provider, not by a Sumaway account or developer-run sync service. Restore is not guaranteed and may not include the latest session. Parents or guardians can review device backup settings and the backup provider's privacy policy."
     ],
     keyPoints: [
       "Backups are managed by Android OS and device backup provider",
-      "Not operated or monitored by a Sums Away server",
+      "May include eligible app progress and local database records",
+      "Not operated or monitored by a Sumaway server",
       "Parents can review or disable backups in Android System Settings"
     ],
-    keywords: ["backup", "android backup", "google drive", "transfer", "cloud", "restore"]
+    keywords: ["backup", "android backup", "google drive", "transfer", "cloud", "database records", "restore"]
   },
   {
     id: "export-import",
     number: 5,
     title: "5. Export and import",
     shortTitle: "Export & Import",
-    plainSummary: "You can export and import an unencrypted JSON backup using Android's system file picker. A local recovery copy is kept so you can undo.",
+    plainSummary: "You can export and import an unencrypted JSON backup using Android's file picker. Exported backups can include retained learning history. A local recovery copy is kept so you can undo.",
     legalParagraphs: [
       "Export and Import use Android's system file picker. The app accesses the backup file or destination you select; it does not request access to your entire file library.",
-      "An exported JSON backup contains your saved profile, progress, activity, mistakes and preferences. It is not encrypted by the app. Anyone with access to that file may be able to read its contents. If you choose a cloud storage provider in the picker, that provider handles the selected file under its own terms and privacy policy.",
+      "An exported JSON backup contains your saved profile, progress, activity, mistakes, preferences and retained learning history. It is not encrypted by the app. Anyone with access to that file may be able to read its contents. If you choose a cloud storage provider in the picker, that provider handles the selected file under its own terms and privacy policy.",
       "Importing a backup merges or replaces local progress as you choose. The app keeps a local recovery copy before an import so you can undo the last import."
     ],
     keyPoints: [
       "Uses Android's system file picker without broad file library access",
+      "Exported JSON backup includes retained learning history",
       "JSON backup file is not encrypted; keep it secure",
       "Local recovery copy is preserved to allow undoing the last import"
     ],
-    keywords: ["export", "import", "file picker", "json", "backup", "recovery", "undo"]
+    keywords: ["export", "import", "file picker", "json", "backup", "retained learning history", "recovery", "undo"]
   },
   {
     id: "notifications-vibration",
@@ -208,37 +212,42 @@ export const POLICY_SECTIONS: PolicySection[] = [
     number: 7,
     title: "7. Children and parents",
     shortTitle: "Children & Parents",
-    plainSummary: "Sums Away is intended for children and families. No real names or contact details are needed. There are no ads, chat, or public profiles.",
+    plainSummary: "Sumaway is intended for children and families. Parents can review learning metrics, screen time and accuracy directly on the phone via the built-in Parent Dashboard, which opens without a PIN.",
     legalParagraphs: [
-      "Sums Away is intended for children and families. A child can play using the default profile without providing a real name or contact information. The app does not contain advertising, messaging, public profiles or online player communication.",
+      "Sumaway is intended for children and families. A child can play using the default profile without providing a real name or contact information. The app does not contain advertising, messaging, public profiles or online player communication.",
+      "The built-in Parent Dashboard enables parents and guardians to review screen time, learning durations, correct/wrong answers and hint usage directly on the device. Because the dashboard opens on the same phone without a PIN, parents sharing the device can inspect learning metrics at any time.",
       "Parents or guardians should manage device backups, exported files, external links and support messages. Please do not send a child's real name, date of birth, school, address, passwords or other unnecessary personal information in a support request."
     ],
     keyPoints: [
       "Children can play with the default profile without personal details",
-      "No advertising, messaging, public profiles or stranger communication",
-      "Parents manage backups and external communication",
-      "Do not send children's personal information in support emails"
+      "Parent Dashboard shows screen time, learning durations, accuracy and hints",
+      "Parent Dashboard opens on the same phone without a PIN",
+      "Zero advertising, messaging, public profiles or stranger communication"
     ],
-    keywords: ["children", "parents", "family", "kids", "default profile", "no ads", "no chat"]
+    keywords: ["children", "parents", "family", "kids", "parent dashboard", "pin-free", "screen time", "learning durations", "default profile", "no ads"]
   },
   {
     id: "retention-deletion",
     number: 8,
     title: "8. Retention and deletion",
     shortTitle: "Retention & Deletion",
-    plainSummary: "Data is kept in an app-private JSON file on your device. You can erase everything at any time by clearing app storage or uninstalling.",
+    plainSummary: "Data is stored in an on-device SQLite database. Detailed question text is removed after 90 days once activity is processed; compact outcomes and time records are kept for summaries. You can clear all data in Android Settings.",
     legalParagraphs: [
-      "Profile, progress and preferences are stored in an app-private JSON save with local recovery copies. If the app crashes, technical crash details may be saved in app-specific local storage. They are not automatically uploaded. Clearing app storage removes the app's local records.",
-      "Local game data remains until you change or remove it, clear the app's storage, or uninstall the app. To remove all local app data, use Android Settings > Apps > Sums Away > Storage (or Storage & cache) > Clear storage/Clear data. Android menu names may differ. Uninstalling normally removes app-specific local data.",
+      "Profile, progress, preferences and learning records are stored locally in an on-device SQLite database with recovery safeguards. Manual backups are exported in JSON format.",
+      "Data Retention & Automatic Clean-up:",
+      "• Detailed question text is automatically removed after 90 days once the activity has been processed.",
+      "• Compact outcome records (such as scores, completion counts) and time records are retained for ongoing daily, weekly and monthly progress summaries.",
+      "• If the app crashes, technical crash details may be saved in app-specific local storage. They are not automatically uploaded.",
+      "Local game data remains until you change or remove it, clear the app's storage, or uninstall the app. To remove all local app data, use Android Settings > Apps > Sumaway > Storage (or Storage & cache) > Clear storage/Clear data. Android menu names may differ. Uninstalling normally removes app-specific local data.",
       "Exported files and Android/cloud backups are separate copies. Delete those through the file manager, storage provider or device-backup settings if you do not want them retained or restored. The developer cannot remotely read or delete your local save or copies held by your chosen provider."
     ],
     keyPoints: [
-      "Stored in app-private JSON save, not an external or SQLite database",
-      "Crash details stay in app-specific local storage and are not uploaded",
-      "To delete all data: Android Settings > Apps > Sums Away > Clear storage",
-      "Developer has no remote access to your device or backup files"
+      "Stored in an on-device SQLite database; manual backups export as JSON",
+      "Detailed question text is automatically removed after 90 days once processed",
+      "Compact outcomes and time records are retained for ongoing progress summaries",
+      "To delete all data: Android Settings > Apps > Sumaway > Storage > Clear storage"
     ],
-    keywords: ["retention", "deletion", "clear storage", "clear data", "uninstall", "json save", "crash logs"]
+    keywords: ["sqlite", "retention", "90 days", "deletion", "clear storage", "clear data", "uninstall", "json backup", "crash logs", "question text"]
   },
   {
     id: "website-support-earlier",
@@ -336,11 +345,13 @@ export function generatePlayConsoleSummary(metadata: PolicyMetadata = POLICY_MET
     `POLICY URL: ${metadata.policyUrl}`,
     `LAST UPDATED: ${metadata.lastUpdated}`,
     `TARGET AUDIENCE: ${metadata.targetAudience}`,
-    `DATA COLLECTION STATUS: Zero Personal Data Collected`,
+    `DATA COLLECTION STATUS: Zero Personal Data Collected (Local Learning Stats Only)`,
     `INTERNET ACCESS: None (android.permission.INTERNET is omitted)`,
     `THIRD-PARTY ADVERTISING: None (no advertising SDKs)`,
-    `THIRD-PARTY ANALYTICS: None (no analytics SDKs)`,
-    `DATA RETENTION: App-private JSON storage; deleted on storage clear or app uninstall`,
+    `THIRD-PARTY ANALYTICS: None (learning statistics calculated locally on-device; no remote uploads)`,
+    `LOCAL STORAGE: On-device SQLite database; manual backups export as JSON`,
+    `PARENT DASHBOARD: Screen time, learning duration, accuracy and hints stored locally; accessible on device without a PIN`,
+    `DATA RETENTION: Detailed question text purged after 90 days; compact progress summaries retained`,
     `NOTICE: A public policy URL and text alone do not certify all applicable legal requirements. The publisher remains responsible for the compliance declaration.`,
   ].join('\n');
 }

@@ -121,8 +121,8 @@ export default function App() {
 
             {/* Core Mission Note */}
             <p className="text-stone-700 text-sm sm:text-base leading-relaxed pt-2">
-              This policy explains how the current offline Android version of <strong>Sums Away</strong> handles 
-              information. The app provides maths games, practice activities and progress tracking. 
+              This policy explains how the current offline Android version of <strong>Sumaway</strong> handles 
+              information. The app provides maths games, practice activities, a parent dashboard and progress tracking. 
               <strong> No account, email login or internet connection is required to play.</strong>
             </p>
 
@@ -206,12 +206,12 @@ export default function App() {
                     Developer Contact &amp; Privacy Inquiries
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                    Sums Away is developed by Dibakar Munshi as an offline educational app for children and families. 
+                    Sumaway is developed by Dibakar Munshi as an offline educational app for children and families. 
                     If you have questions about this privacy policy, local data handling, or older online data from earlier test versions:
                   </p>
                   <div className="pt-2 flex flex-wrap items-center gap-3">
                     <a
-                      href={`mailto:${POLICY_METADATA.privacyContact}?subject=Sums%20Away%20Privacy%20Question`}
+                      href={`mailto:${POLICY_METADATA.privacyContact}?subject=Sumaway%20Privacy%20Question`}
                       className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 rounded-md transition-colors cursor-pointer"
                     >
                       <Mail className="w-3.5 h-3.5" />
