@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { PolicySection } from '../utils/policyData';
-import { Link2, Check, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface PolicySectionCardProps {
   section: PolicySection;
@@ -18,16 +18,6 @@ export const PolicySectionCard: React.FC<PolicySectionCardProps> = ({
   audienceMode,
   searchQuery,
 }) => {
-  const [copiedLink, setCopiedLink] = useState(false);
-
-  const handleCopyAnchor = () => {
-    const url = new URL(window.location.href);
-    url.hash = section.id;
-    navigator.clipboard.writeText(url.toString());
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2000);
-  };
-
   // Helper to highlight matching text if there is an active search query
   const renderText = (text: string) => {
     if (!searchQuery || !searchQuery.trim()) {
@@ -63,18 +53,6 @@ export const PolicySectionCard: React.FC<PolicySectionCardProps> = ({
             {renderText(section.title)}
           </h2>
         </div>
-        <button
-          onClick={handleCopyAnchor}
-          className="no-print p-1.5 text-stone-400 hover:text-stone-700 hover:bg-stone-100 rounded-md transition-colors cursor-pointer shrink-0"
-          title="Copy direct link to this section"
-          aria-label={`Copy link to section ${section.number}`}
-        >
-          {copiedLink ? (
-            <Check className="w-4 h-4 text-emerald-600" />
-          ) : (
-            <Link2 className="w-4 h-4 text-stone-500" />
-          )}
-        </button>
       </div>
 
       {/* Parent Plain Language Summary Box (Always visible or prioritized in plain mode) */}

@@ -8,7 +8,6 @@ import { Header } from './components/Header';
 import { ComplianceGrid } from './components/ComplianceGrid';
 import { TableOfContents } from './components/TableOfContents';
 import { PolicySectionCard } from './components/PolicySectionCard';
-import { PlayConsoleModal } from './components/PlayConsoleModal';
 import { Footer } from './components/Footer';
 import {
   POLICY_METADATA,
@@ -16,13 +15,12 @@ import {
   searchPolicy,
   calculateReadingMetrics,
 } from './utils/policyData';
-import { ShieldCheck, Mail, ArrowRight, RotateCcw, Award } from 'lucide-react';
+import { Mail, RotateCcw, Award } from 'lucide-react';
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [audienceMode, setAudienceMode] = useState<'legal' | 'plain'>('legal');
-  const [activeSectionId, setActiveSectionId] = useState<string>('scope-purpose');
-  const [isPlayModalOpen, setIsPlayModalOpen] = useState(false);
+  const [activeSectionId, setActiveSectionId] = useState<string>('what-policy-covers');
 
   // Compute filtered sections based on search query
   const filteredSections = useMemo(() => {
@@ -42,18 +40,11 @@ export default function App() {
     }
   };
 
-  const handlePrint = () => {
-    window.print();
-  };
-
   return (
     <div id="top" className="min-h-screen bg-stone-50 text-stone-900 flex flex-col font-sans">
       
       {/* Top Bar Header */}
-      <Header
-        onOpenPlayConsoleModal={() => setIsPlayModalOpen(true)}
-        onPrint={handlePrint}
-      />
+      <Header />
 
       {/* Main Content Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -208,13 +199,6 @@ export default function App() {
                       <Mail className="w-3.5 h-3.5" />
                       <span>Contact Dibakar Munshi ({POLICY_METADATA.privacyContact})</span>
                     </a>
-                    <button
-                      onClick={() => setIsPlayModalOpen(true)}
-                      className="no-print inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-stone-700 bg-white hover:bg-stone-50 border border-stone-300 rounded-md transition-colors cursor-pointer"
-                    >
-                      <span>Play Console Reference Helper</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-stone-500" />
-                    </button>
                   </div>
                 </div>
               </div>
@@ -228,12 +212,6 @@ export default function App() {
 
       {/* Institutional Legal Footer */}
       <Footer />
-
-      {/* Google Play Console Data Safety Helper Modal */}
-      <PlayConsoleModal
-        isOpen={isPlayModalOpen}
-        onClose={() => setIsPlayModalOpen(false)}
-      />
 
     </div>
   );

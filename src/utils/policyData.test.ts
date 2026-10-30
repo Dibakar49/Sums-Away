@@ -6,7 +6,6 @@ import {
   COMPLIANCE_ITEMS,
   searchPolicy,
   calculateReadingMetrics,
-  generatePlayConsoleSummary,
 } from './policyData';
 
 test('POLICY_METADATA contains correct Sumaway name, developer and URL attributes', () => {
@@ -91,14 +90,4 @@ test('calculateReadingMetrics computes word count and reading time', () => {
   assert.ok(metrics.totalParagraphs >= 10);
   assert.ok(metrics.totalWords > 500);
   assert.ok(metrics.readingTimeMinutes >= 3);
-});
-
-test('generatePlayConsoleSummary includes Sumaway, in-phone local storage, Parent Dashboard and 90 days retention notice', () => {
-  const summary = generatePlayConsoleSummary();
-  assert.ok(summary.includes('Sumaway: Math Games for Kids'));
-  assert.ok(summary.includes('Dibakar Munshi'));
-  assert.ok(summary.includes('In-phone local storage'));
-  assert.ok(summary.includes('PARENT DASHBOARD'));
-  assert.ok(summary.includes('90 days'));
-  assert.ok(summary.includes('https://sumsaway.vercel.app/'));
 });

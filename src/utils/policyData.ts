@@ -333,24 +333,3 @@ export function calculateReadingMetrics(sections: PolicySection[] = POLICY_SECTI
     readingTimeMinutes,
   };
 }
-
-/**
- * Formats a clean reference summary for Google Play Console submission
- */
-export function generatePlayConsoleSummary(metadata: PolicyMetadata = POLICY_METADATA): string {
-  return [
-    `APP: ${metadata.appName}`,
-    `DEVELOPER: ${metadata.developer}`,
-    `CONTACT: ${metadata.privacyContact}`,
-    `POLICY URL: ${metadata.policyUrl}`,
-    `LAST UPDATED: ${metadata.lastUpdated}`,
-    `TARGET AUDIENCE: ${metadata.targetAudience}`,
-    `DATA COLLECTION STATUS: Zero Personal Data Collected (Local Learning Stats Only)`,
-    `THIRD-PARTY ADVERTISING: None (no advertising SDKs)`,
-    `THIRD-PARTY ANALYTICS: None (learning statistics calculated locally on-device; no remote uploads)`,
-    `LOCAL STORAGE: In-phone local storage; manual backups export as JSON`,
-    `PARENT DASHBOARD: Screen time, learning duration, accuracy and hints stored locally; accessible on device without a PIN`,
-    `DATA RETENTION: Detailed question text purged after 90 days; compact progress summaries retained`,
-    `NOTICE: A public policy URL and text alone do not certify all applicable legal requirements. The publisher remains responsible for the compliance declaration.`,
-  ].join('\n');
-}
