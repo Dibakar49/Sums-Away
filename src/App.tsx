@@ -3,12 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Header } from './components/Header';
 import { ComplianceGrid } from './components/ComplianceGrid';
 import { TableOfContents } from './components/TableOfContents';
 import { PolicySectionCard } from './components/PolicySectionCard';
 import { Footer } from './components/Footer';
+import { SumawayWebsite } from './components/SumawayWebsite';
 import {
   POLICY_METADATA,
   POLICY_SECTIONS,
@@ -17,10 +18,57 @@ import {
 } from './utils/policyData';
 import { Mail, RotateCcw, Award } from 'lucide-react';
 
+function checkIsWebsiteRoute(): boolean {
+  if (typeof window === 'undefined') return false;
+  const pathname = window.location.pathname.toLowerCase().replace(/\/+$/, '');
+  const hash = window.location.hash.toLowerCase();
+  const searchParams = new URLSearchParams(window.location.search);
+  return (
+    pathname === '/website' ||
+    pathname.endsWith('/website') ||
+    hash === '#/website' ||
+    hash === '#website' ||
+    searchParams.get('page') === 'website'
+  );
+}
+
 export default function App() {
+  const [isWebsiteView, setIsWebsiteView] = useState<boolean>(() => checkIsWebsiteRoute());
   const [searchQuery, setSearchQuery] = useState('');
   const [audienceMode, setAudienceMode] = useState<'legal' | 'plain'>('legal');
   const [activeSectionId, setActiveSectionId] = useState<string>('what-policy-covers');
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setIsWebsiteView(checkIsWebsiteRoute());
+    };
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isWebsiteView) {
+      document.title = 'Sumaway: Math Games for Kids | Official Website';
+    } else {
+      document.title = 'Privacy Policy | Sumaway: Math Games for Kids';
+    }
+  }, [isWebsiteView]);
+
+  const navigateToWebsite = () => {
+    window.history.pushState({}, '', '/website');
+    setIsWebsiteView(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToPrivacy = () => {
+    window.history.pushState({}, '', '/');
+    setIsWebsiteView(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Compute filtered sections based on search query
   const filteredSections = useMemo(() => {
@@ -40,11 +88,15 @@ export default function App() {
     }
   };
 
+  if (isWebsiteView) {
+    return <SumawayWebsite onNavigateToPrivacy={navigateToPrivacy} />;
+  }
+
   return (
     <div id="top" className="min-h-screen bg-stone-50 text-stone-900 flex flex-col font-sans">
       
       {/* Top Bar Header */}
-      <Header />
+      <Header onNavigateToWebsite={navigateToWebsite} />
 
       {/* Main Content Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -211,7 +263,7 @@ export default function App() {
       </main>
 
       {/* Institutional Legal Footer */}
-      <Footer />
+      <Footer onNavigateToWebsite={navigateToWebsite} />
 
     </div>
   );

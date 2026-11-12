@@ -7,7 +7,11 @@ import React from 'react';
 import { Mail, Shield, ArrowUp } from 'lucide-react';
 import { POLICY_METADATA } from '../utils/policyData';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigateToWebsite?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigateToWebsite }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -74,7 +78,19 @@ export const Footer: React.FC = () => {
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
+            {onNavigateToWebsite && (
+              <a
+                href="/website"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigateToWebsite();
+                }}
+                className="no-print text-stone-700 hover:text-stone-950 font-semibold underline underline-offset-2 transition-colors cursor-pointer"
+              >
+                Sumaway Website (/website)
+              </a>
+            )}
             <button
               onClick={scrollToTop}
               className="no-print inline-flex items-center gap-1 text-stone-600 hover:text-stone-900 font-medium transition-colors cursor-pointer"
